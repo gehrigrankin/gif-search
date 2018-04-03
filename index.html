@@ -59,7 +59,7 @@
 
             var gifDiv = $('<div>');
             var p = $('<p>');
-            var animalImage = $('<img class="gif">');
+            var animalImage = $('<img>');
 
             p.text('rating: ' + results[i].rating);
 
@@ -70,6 +70,8 @@
             animalImage.attr('data-animate', results[i].images.fixed_height.url);
 
             animalImage.attr('data-still', results[i].images.fixed_height_still.url);
+            
+            animalImage.addClass('gif-pause')
 
             console.log(animalImage);
 
@@ -127,7 +129,8 @@
         renderButtons();
       });
 
-      $('.gif').on('click', function(){
+      $(document).on('click', '.gif-pause', function(){
+        console.log('hello');
         var state = $(this).attr('data-state');
 
         if (state == 'still'){
